@@ -9,19 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        name: Pull Code
-      - run: ls -la
-        name: check pull
       - run: zip -r apps.zip app1 app2 app3
-      - run: ls -la
-      - run: cd app2
-      - run: ls -la
+      - run: which scp && which ssh
 
 #   - On Git
 #   pull
 #   apt update & install zip
 #   zip
-#   scp -i to ec2
+#   scp -i <???> to ec2
 #   ssh to ec2
 #   - On Ec2
 #   unzip
