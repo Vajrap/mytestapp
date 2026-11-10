@@ -17,7 +17,7 @@ jobs:
       - run: mkdir ~/.ssh
       - run: echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
 
-      - run: scp -i ./server_key.pem ./apps.zip ubuntu@43.208.241.208:/hone/ubuntu/apps
+      - run: scp -i ./server_key.pem ./apps.zip ubuntu@43.208.241.208:/home/ubuntu/
 
 #   - On Git
 #   pull
