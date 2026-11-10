@@ -1,0 +1,11 @@
+name: My Example
+on:
+  push:
+    branches:
+      - main
+jobs:
+  just-test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls -la
+      - run: echo "Sawasdee"
