@@ -13,3 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Another job"
+  other-work:
+    needs: just-test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Other job"
