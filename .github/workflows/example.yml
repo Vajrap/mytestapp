@@ -12,12 +12,15 @@ jobs:
         name: Pull Code
       - run: ls -la
         name: check pull
+      - run: sudo apt update
+      - run: sudo apt install zip
+      - run: zip -r apps.zip app1 app2 app3
+      - run: ls -la
 
 #   - On Git
 #   pull
-#   remove node package folder
 #   apt update & install zip
-#   zip ??
+#   zip
 #   scp to ec2
 #   ssh to ec2
 #   - On Ec2
