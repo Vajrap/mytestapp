@@ -19,7 +19,7 @@ jobs:
 
       - run: scp -i ./server_key.pem ./apps.zip ubuntu@43.208.241.208:/home/ubuntu/
 
-      - run: ssh -i ./server_key.pem ubuntu@43.208.241.208 && ls-la
+      - run: ssh -i ./server_key.pem ubuntu@43.208.241.208 && ls -la
 
 #   - On Git
 #   pull
