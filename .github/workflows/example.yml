@@ -19,7 +19,7 @@ jobs:
 
       - run: scp -i ./server_key.pem ./apps.zip ubuntu@43.208.241.208:/home/ubuntu/
 
-      - run: ssh -i ./server_key.pem ubuntu@43.208.241.208 && ls -la
+      - run: ssh -i ./server_key.pem ubuntu@43.208.241.208 "pm2 stop app1 app2 app3 && rm -r app1 app2 app3 && unzip apps.zip && cd ~/app1 && npm install && cd ~/app2 && npm install && cd ~/app3 && npm install && pm2 start ~/app1/app1.js ~/app2/app2.js ~/app3/app3.js"
 
 #   - On Git
 #   pull
