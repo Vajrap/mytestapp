@@ -19,18 +19,22 @@ jobs:
 
       - run: scp -i ./server_key.pem ./apps.zip ubuntu@vajrap.space:/home/ubuntu/
 
+      # - run: |
+      #     ssh -i ./server_key.pem ubuntu@vajrap.space "
+      #       pm2 stop app1 app2 app3 || true
+      #       rm -r app1 app2 app3 || true
+      #       unzip apps.zip
+      #       cd ~/app1
+      #       npm install
+      #       cd ~/app2
+      #       npm install
+      #       cd ~/app3
+      #       npm install
+      #       pm2 start ~/app1/app1.js ~/app2/app2.js ~/app3/app3.js
+      #     "
       - run: |
           ssh -i ./server_key.pem ubuntu@vajrap.space "
-            pm2 stop app1 app2 app3 || true
-            rm -r app1 app2 app3 || true
-            unzip apps.zip
-            cd ~/app1
-            npm install
-            cd ~/app2
-            npm install
-            cd ~/app3
-            npm install
-            pm2 start ~/app1/app1.js ~/app2/app2.js ~/app3/app3.js
+            whoami
           "
 
 #       - run: |
@@ -49,16 +53,3 @@ jobs:
 #             cd ~/app3 &&
 #             npm install &&
 #             pm2 start ~/app1/app1.js ~/app2/app2.js ~/app3/app3.js
-
-#   - On Git
-#   pull
-#   zip
-#   scp -i <???> to ec2
-# export PATH=\"home/ubuntu/.local/share/fnm:\$PATH\""
-#   ssh to ec2
-#   - On Ec2
-#   unzip &&
-#   stop pm2 &&
-#   pull &&
-#   npm install &&
-#   pm2 run &&
