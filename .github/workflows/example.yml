@@ -17,15 +17,44 @@ jobs:
       - run: mkdir ~/.ssh
       - run: echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
 
-      - run: scp -i ./server_key.pem ./apps.zip ubuntu@43.208.241.208:/home/ubuntu/
+      - run: scp -i ./server_key.pem ./apps.zip ubuntu@vajrap.space:/home/ubuntu/
 
-      - run: ssh -i ./server_key.pem ubuntu@43.208.241.208 "pm2 stop app1 app2 app3 || true && rm -r app1 app2 app3 && unzip apps.zip && cd ~/app1 && npm install && cd ~/app2 && npm install && cd ~/app3 && npm install && pm2 start ~/app1/app1.js ~/app2/app2.js ~/app3/app3.js"
+      - run: |
+          ssh -i ./server_key.pem ubuntu@vajrap.space "
+            pm2 stop app1 app2 app3 || true
+            rm -r app1 app2 app3
+            unzip apps.zip
+            cd ~/app1
+            npm install
+            cd ~/app2
+            npm install
+            cd ~/app3
+            npm install
+            pm2 start ~/app1/app1.js ~/app2/app2.js ~/app3/app3.js
+          "
+
+#       - run: |
+#           ssh -i ./server_key.pem ubuntu@vajrap.space "
+#             -------------This is an example on if we use fnm, shell won't be able to find pm2-------------
+#             export PATH=\"/home/ubuntu/.local/share/fnm:\$PATH\"
+#             eval \"\$(fnm env)\"
+#             ----------------------------------------------------------------------------------------------
+#             pm2 stop app1 app2 app3 || true &&
+#             rm -r app1 app2 app3 &&
+#             unzip apps.zip &&
+#             cd ~/app1 &&
+#             npm install &&
+#             cd ~/app2 &&
+#             npm install &&
+#             cd ~/app3 &&
+#             npm install &&
+#             pm2 start ~/app1/app1.js ~/app2/app2.js ~/app3/app3.js
 
 #   - On Git
 #   pull
 #   zip
 #   scp -i <???> to ec2
-#
+# export PATH=\"home/ubuntu/.local/share/fnm:\$PATH\""
 #   ssh to ec2
 #   - On Ec2
 #   unzip &&
