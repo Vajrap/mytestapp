@@ -7,7 +7,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/atom", (req, res) => {
-  res.semd("This is Atom");
+  res.send("This is Atom");
+});
+
+app.get("/new", (req, res) => {
+  res.send("A new route has been added!");
 });
 
 app.listen(2222, () => {

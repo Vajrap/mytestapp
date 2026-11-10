@@ -22,7 +22,7 @@ jobs:
       - run: |
           ssh -i ./server_key.pem ubuntu@vajrap.space "
             pm2 stop app1 app2 app3 || true
-            rm -r app1 app2 app3
+            rm -r app1 app2 app3 || true
             unzip apps.zip
             cd ~/app1
             npm install
