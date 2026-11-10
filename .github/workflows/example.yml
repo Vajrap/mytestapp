@@ -10,17 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: zip -r apps.zip app1 app2 app3
-      - run: which scp && which ssh
+      - run: echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > server_key.pem
+      - run: cat server_key.pem
+      # - run: scp -i ./server_key.pem
 
 #   - On Git
 #   pull
-#   apt update & install zip
 #   zip
 #   scp -i <???> to ec2
 #   ssh to ec2
 #   - On Ec2
-#   unzip
-#   stop pm2
-#   pull
-#   npm install
-#   pm2 run
+#   unzip &&
+#   stop pm2 &&
+#   pull &&
+#   npm install &&
+#   pm2 run &&
