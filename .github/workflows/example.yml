@@ -8,12 +8,14 @@ jobs:
     name: Deploy My Apps
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # - uses: actions/checkout@v4
       # - run: zip -r apps.zip app1 app2 app3
-      # - run: echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > server_key.pem
+      - run: echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > server_key.pem
+      - run: echo "${{ secrets.SSH_KNOWN_HOST }}" > ~/.ssh/known_hosts
+      - run: cat ~/.ssh/known_hosts
       # - run: chmod 400 server_key.pem
       # - run: scp -i ./server_key.pem ./apps.zip ubuntu@43.208.241.208:/hone/ubuntu/apps
-      - run: cd ~/.ssh && ls -la
+      # - run: cd ~/ && mkdir .ssh && cd .ssh && echo "vajrap.space ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJn2BwVUvWOg/EIyFHyg0hS6NeFDgonLj9xxKOlVkjuS" > known_hosts
 
 #   - On Git
 #   pull
